@@ -12,4 +12,6 @@ RSpec.describe Product, type: :model do
 
   its(:price)       { is_expected.to eq 0.0 }
   its(:stock_level) { is_expected.to eq 0 }
+
+  it { is_expected.to have_and_belong_to_many :categories }
 end

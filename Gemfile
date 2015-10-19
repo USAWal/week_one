@@ -50,3 +50,5 @@ group :development, :test do
   gem 'rspec-its', '~> 1.2'
 end
 
+gem 'devise', '~> 3.5', '>= 3.5.2'
+

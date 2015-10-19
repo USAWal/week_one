@@ -1,3 +1,6 @@
+#ruby=ruby-2.2.1
+#ruby-gemset=week_one
+
 source 'https://rubygems.org'
 
 

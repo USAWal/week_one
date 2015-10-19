@@ -51,4 +51,4 @@ group :development, :test do
 end
 
 gem 'devise', '~> 3.5', '>= 3.5.2'
-
+gem 'slim-rails', '~> 3.0', '>= 3.0.1'

@@ -46,5 +46,6 @@ group :development, :test do
   gem 'spring'
 
   gem 'rspec-rails', '~> 3.3', '>= 3.3.3'
+  gem 'shoulda-matchers', '~> 3.0'
 end
 

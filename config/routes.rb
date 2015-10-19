@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'main#index'
 
+  devise_for :users
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

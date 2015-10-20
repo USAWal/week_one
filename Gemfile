@@ -52,4 +52,5 @@ end
 
 gem 'devise', '~> 3.5', '>= 3.5.2'
 gem 'slim-rails', '~> 3.0', '>= 3.0.1'
-gem 'carrierwave', '~> 0.10.0'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'mini_magick', '~> 4.3', '>= 4.3.6'

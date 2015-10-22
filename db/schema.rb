@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151022101807) do
+ActiveRecord::Schema.define(version: 20151022103100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,13 @@ ActiveRecord::Schema.define(version: 20151022101807) do
     t.datetime "updated_at",                null: false
     t.json     "pictures"
   end
+
+  create_table "products_shops", id: false, force: :cascade do |t|
+    t.integer "product_id", null: false
+    t.integer "shop_id",    null: false
+  end
+
+  add_index "products_shops", ["shop_id", "product_id"], name: "index_products_shops_on_shop_id_and_product_id", unique: true, using: :btree
 
   create_table "shops", force: :cascade do |t|
     t.integer  "user_id",    null: false

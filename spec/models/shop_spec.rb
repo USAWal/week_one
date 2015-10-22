@@ -6,10 +6,16 @@ RSpec.describe Shop, type: :model do
 
   it { is_expected.to validate_presence_of :owner }
   it { is_expected.to validate_presence_of :name }
+  context do
+    subject { create :shop }
+    it { is_expected.to validate_uniqueness_of :name }
+  end
 
   it { is_expected.to belong_to(:owner).with_foreign_key(:user_id).class_name('User') }
   it { is_expected.to have_and_belong_to_many :products }
   it { is_expected.to have_many(:categories).through(:products) }
+
+  it { is_expected.to have_db_index(:name).unique(true) }
 
   context 'has some products with identical categories' do
     subject { create :shop }

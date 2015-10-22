@@ -4,4 +4,5 @@ class Shop < ActiveRecord::Base
   has_many :categories, -> { uniq }, through: :products
 
   validates :name, :owner, presence: true
+  validates :name, uniqueness: true
 end

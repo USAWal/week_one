@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
 
   has_one  :cart,     inverse_of: :user,   dependent: :nullify
   has_many :products, inverse_of: :seller, dependent: :destroy
+  has_many :shops,    inverse_of: :owner,  dependent: :restrict_with_error
 end

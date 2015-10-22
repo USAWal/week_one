@@ -27,4 +27,12 @@ RSpec.describe Shop, type: :model do
 
     its(:categories) { is_expected.to match_array categories }
   end
+
+  context 'there are some shops' do
+    before(:each) { create_list :shop, 20 }
+
+    it 'returns 10 paginated shops' do
+      expect(Shop.page(1).count).to eq 10
+    end
+  end
 end

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'shops/index'
+
   root 'main#index'
 
   devise_for :users

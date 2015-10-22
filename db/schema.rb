@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20151020091327) do
   add_index "categories_products", ["category_id", "product_id"], name: "index_categories_products_on_category_id_and_product_id", unique: true, using: :btree
 
   create_table "products", force: :cascade do |t|
+    t.integer  "user_id",                   null: false
     t.string   "title",                     null: false
     t.text     "description"
     t.float    "price",       default: 0.0, null: false

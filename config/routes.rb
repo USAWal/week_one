@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  resources :shops, only: [:index]
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

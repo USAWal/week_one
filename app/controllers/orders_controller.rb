@@ -13,8 +13,11 @@ class OrdersController < ApplicationController
         end
         order.save && CartItem.where(id: items.map(&:id)).destroy_all
       end
-    end
 
-    redirect_to action: :index
+      redirect_to action: :index
+    else
+      flash[:alert] = @cart.errors.full_messages.join ', '
+      redirect_to :back
+    end
   end
 end

@@ -1,1 +1,13 @@
+.container
+  - @shops.each_slice 4 do |shops|
+    .row
+      - shops.each do |shop|
+        .col-md-3
+          .card
+            = image_tag shop.logo_url, class: 'grid-logo'
+            .card-block
+              h4.card-title = shop.name.truncate 20
+              p.card-text = shop.description.truncate 100
+              = link_to 'Visit', shop_path(shop), class: 'btn btn-primary'
+    br
 = paginate @shops

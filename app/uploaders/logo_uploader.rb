@@ -20,7 +20,7 @@ class LogoUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
 
-  process resize_to_fit: [200, 100]
+  process resize_to_fill: [200, 100]
 
   # def scale(width, height)
   #   # do something

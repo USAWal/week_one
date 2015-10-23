@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :shops, only: [:index]
+  resources :shops, only: [:index, :show]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -20,6 +20,7 @@
         = category_form.label :title
         = category_form.text_field :title, calss: 'form-control'
         = category_form.check_box :_destroy
+    = form.select :shop_ids, current_user.shops.pluck(:name, :id), {}, multiple: true
     = form.submit class: 'btn btn-primary'
 br
 .container

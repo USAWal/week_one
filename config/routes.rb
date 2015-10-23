@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   get '/cart' => 'carts#show'
   post '/cart/add' => 'carts#add'
   delete '/cart/delete/:item_id' => 'carts#delete', as: :delete_item
-  post '/cart/order' => 'carts#order'
+  authenticate :user do
+    post '/cart/order' => 'carts#order'
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

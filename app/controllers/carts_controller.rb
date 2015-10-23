@@ -6,14 +6,26 @@ class CartsController < ApplicationController
     cart_params = params.require(:item).permit(:product_id, :count)
     product = Product.find cart_params[:product_id]
     count = cart_params[:count].to_i
-    count = product.stock_level > count ? count : product.stock_level
     item = @cart.items.find_or_initialize_by product_id: product.id
-    item.update! count: count
-    flash[:notice] = 'Product successfully added'
+    item.count = count
+    if item.save
+      flash[:notice] = 'Product successfully added'
+    else
+      flash[:alert] = item.errors.full_messages.join ', '
+    end
     redirect_to :back
   end
 
   def order
+    if @cart.valid?
+      @cart.items.includes(:product).group_by { |item| item.product.seller }.each do |seller, items|
+        order = Order.new seller: seller, client: current_user
+        items.each do |item|
+          order.items.build product: item.product, count: item.count
+        end
+        order.save && CartItem.where(id: items.map(&:id)).destroy_all
+      end
+    end
   end
 
   def delete

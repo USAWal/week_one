@@ -1,0 +1,24 @@
+.container
+  .row
+    .col-md-3
+      = link_to 'New Product', new_product_path, class: 'btn btn-primary'
+  br
+  - @products.each_slice(4) do |product_group|
+    .row
+      - product_group.each do |product|
+        .col-md-3
+          = link_to product
+            .card
+              .carousel.slide data-ride='carousel'
+                .carousel-inner role='listbox'
+                  - product.pictures.each_with_index do |picture, index|
+                    .item class="#{index.zero? ? 'active' : ''}"
+                      img src="#{picture.url}"
+              .card-block
+                h4.card-title = product.title
+                p.card-text = product.description.truncate 100
+                hr
+                  .col-sm-6
+                    = product.stock_level
+                  .col-sm-6
+                    = number_to_currency product.price

@@ -1,4 +1,11 @@
 .container
+  - if @product.seller == @current_user
+    .row
+      .col-md-2
+        = link_to 'Edit', edit_product_path(@product), class: 'btn btn-primary'
+      .col-md-2
+        = link_to 'Delete', product_path(@product), class: 'btn btn-primary', method: :delete
+    br
   .row
     .col-md-2
       #pictures.carousel.slide data-ride='carousel'

@@ -1,0 +1,18 @@
+.container
+  = form_for @product do |form|
+    .fieldset.form-group
+      = form.label :title
+      = form.text_field :title, class: 'form-control', placeholder: 'Enter product title'
+    .fieldset.form-group
+      = form.label :description
+      = form.text_area :description, class: 'form-control', placeholder: 'Describe your product'
+    .fieldset.form-group
+      = form.label :price
+      = form.number_field :price, class: 'form-control'
+    .fieldset.form-group
+      = form.label :stock_level
+      = form.number_field :stock_level, class: 'form-control', min: 1
+    .fieldset.form-group
+      = form.label :pictures
+      = form.file_field :pictures, multiple: true, class: 'form-control-file'
+    = form.submit class: 'btn btn-primary'

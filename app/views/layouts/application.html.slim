@@ -11,10 +11,14 @@ html
         = link_to 'Week One', root_path, class: 'navbar-brand'
         ul.nav.navbar-nav
           li.nav-item
-            = link_to 'Shops', shops_path, class: 'nav-link'
-          li.nav-item
             = link_to 'Cart', cart_path, class: 'nav-link'
           - if user_signed_in?
+            li.nav-item
+              = link_to 'My Products', products_path, class: 'nav-link'
+            li.nav-item
+              = link_to 'My Orders', orders_path(type: 'my'), class: 'nav-link'
+            li.nav-item
+              = link_to 'Serving Orders', orders_path(type: 'serving'), class: 'nav-link'
             li.nav-item
               = link_to 'My Account', edit_user_registration_path, class: 'nav-link'
             li.nav-item

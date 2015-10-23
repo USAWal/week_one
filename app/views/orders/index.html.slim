@@ -1,0 +1,17 @@
+.container
+  .row
+    .col-md-12
+      - @orders.find_each do |order|
+        h2
+          = @type == 'my' ? 'Seller is: ' : 'Client is '
+          = @type == 'my' ? order.seller.email : order.client.email
+        table.table
+          thead
+            tr
+              th Product
+              th Count
+          tbody
+            - order.items.find_each do |item|
+              tr
+                td = item.product.title
+                td = item.count

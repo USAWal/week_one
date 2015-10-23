@@ -18,4 +18,4 @@ table.table
       th = number_to_currency @cart.items.inject(0) { |total, item| total + item.count * item.product.price }
 hr
   .container
-    = button_to 'Order', cart_order_path, class: 'btn btn-primary'
+    = button_to 'Order', url_for(controller: :orders, action: :create), class: 'btn btn-primary'

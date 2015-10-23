@@ -1,20 +1,22 @@
 Rails.application.routes.draw do
-  root 'main#index'
+  root 'shops#index'
 
   devise_for :users, controllers: { sessions: 'users/sessions' }
+
+  get '/cart' => 'carts#show'
+  post '/cart/add' => 'carts#add'
+  delete '/cart/delete/:item_id' => 'carts#delete', as: :delete_item
+  authenticate :user do
+    resources :orders, only: [:index, :create]
+    resources :products, exclude: [:show]
+    resources :shops, only: [:new, :edit, :update, :create, :destroy]
+  end
 
   resources :shops, only: [:index, :show] do
     resources :categories, only: :show
   end
 
   resources :products, only: :show
-
-  get '/cart' => 'carts#show'
-  post '/cart/add' => 'carts#add'
-  delete '/cart/delete/:item_id' => 'carts#delete', as: :delete_item
-  authenticate :user do
-    post '/cart/order' => 'carts#order'
-  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -9,6 +9,6 @@ class OrderItem < ActiveRecord::Base
   private
 
   def decrease_stock_level
-    product.decrement :stock_level, count
+    product.decrement! :stock_level, count
   end
 end

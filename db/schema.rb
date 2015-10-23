@@ -54,10 +54,12 @@ ActiveRecord::Schema.define(version: 20151022103100) do
   add_index "products_shops", ["shop_id", "product_id"], name: "index_products_shops_on_shop_id_and_product_id", unique: true, using: :btree
 
   create_table "shops", force: :cascade do |t|
-    t.integer  "user_id",    null: false
-    t.string   "name",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id",     null: false
+    t.string   "name",        null: false
+    t.text     "description"
+    t.string   "logo"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "shops", ["name"], name: "index_shops_on_name", unique: true, using: :btree

@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   delete '/cart/delete/:item_id' => 'carts#delete', as: :delete_item
   authenticate :user do
     resources :orders, only: [:index, :create]
-    resources :products, exclude: [:show]
+    resources :products, exclude: [:show] do
+      resources :categories, only: [:create]
+    end
     resources :shops, only: [:new, :edit, :update, :create, :destroy]
   end
 

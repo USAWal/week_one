@@ -23,6 +23,8 @@
   hr
   .row
     .col-md-3
+      h2 Categories:
+      br
       .list-group
         - @shop.categories.each do |category|
           = link_to category.title, shop_category_path(shop_id: @shop.slug, id: category.slug), class: 'list-group-item'

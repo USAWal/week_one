@@ -1,0 +1,12 @@
+.container
+  = form_for @shop do |form|
+    .fieldset.form-group
+      = form.label :name
+      = form.text_field :name, class: 'form-control', placeholder: 'Enter shop name'
+    .fieldset.form-group
+      = form.label :description
+      = form.text_area :description, class: 'form-control', placeholder: 'Describe your shop'
+    .fieldset.form-group
+      = form.label :logo
+      = form.file_field :logo, class: 'form-control-file'
+    = form.submit class: 'btn btn-primary'

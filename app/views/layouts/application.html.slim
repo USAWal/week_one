@@ -14,6 +14,8 @@ html
             = link_to 'Cart', cart_path, class: 'nav-link'
           - if user_signed_in?
             li.nav-item
+              = link_to 'My Shops', user_shops_path(current_user), class: 'nav-link'
+            li.nav-item
               = link_to 'My Products', products_path, class: 'nav-link'
             li.nav-item
               = link_to 'My Orders', orders_path(type: 'my'), class: 'nav-link'

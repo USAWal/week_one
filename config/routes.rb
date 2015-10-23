@@ -14,6 +14,10 @@ Rails.application.routes.draw do
     resources :shops, only: [:new, :edit, :update, :create, :destroy]
   end
 
+  resources :user do
+    resources :shops, only: [:index]
+  end
+
   resources :shops, only: [:index, :show] do
     resources :categories, only: :show
   end

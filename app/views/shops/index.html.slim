@@ -1,4 +1,9 @@
 .container
+  - if user_signed_in?
+    .row
+      .col-md-12
+        = link_to 'New Shop', new_shop_path, class: 'btn btn-primary'
+    hr
   - @shops.each_slice 4 do |shops|
     .row
       - shops.each do |shop|
@@ -8,6 +13,13 @@
             .card-block
               h4.card-title = shop.name.truncate 20
               p.card-text = shop.description.truncate 100
-              = link_to 'Visit', shop_path(shop), class: 'btn btn-primary'
+              .row
+                .col-sm-3
+                  = link_to 'Visit', shop_path(shop), class: 'btn btn-primary'
+                - if current_user == shop.owner
+                  .col-sm-3
+                    = link_to 'Edit', edit_shop_path(shop), class: 'btn btn-primary'
+                  .col-sm-3
+                    = link_to 'Delete', shop_path(shop), class: 'btn btn-primary', method: :delete
     br
 = paginate @shops

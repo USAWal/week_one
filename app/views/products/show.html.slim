@@ -1,0 +1,23 @@
+.container
+  .row
+    .col-md-2
+      #pictures.carousel.slide data-ride='carousel'
+        .carousel-inner role='listbox'
+          - @product.pictures.each_with_index do |picture, index|
+            .item class="#{index.zero? ? 'active' : ''}"
+              img src="#{picture.url}"
+    .col-md-10
+      .row
+        .col-md-12
+          h1 = @product.title
+      .row
+        .col-md-12
+          h1
+            | Price: 
+            = number_to_currency @product.price
+  hr
+  .row
+    col-md-12
+      h1 Description:
+    col-md-12
+      p = @product.description

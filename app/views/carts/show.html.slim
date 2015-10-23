@@ -1,0 +1,21 @@
+table.table
+  thead
+    tr
+      th Product
+      th Count
+      th Price
+  tbody
+    - @cart.items.each do |item|
+      tr
+        td = link_to item.product.title, product_path(item.product)
+        td = item.count
+        td = number_to_currency item.count * item.product.price
+        td = link_to 'X', delete_item_path(item_id: item.id), method: :delete
+  tfoot
+    tr
+      th
+      th Total price:
+      th = number_to_currency @cart.items.inject(0) { |total, item| total + item.count * item.product.price }
+hr
+  .container
+    = button_to 'Order', cart_order_path, class: 'btn btn-primary'

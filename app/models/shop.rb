@@ -1,5 +1,8 @@
 class Shop < ActiveRecord::Base
+  extend FriendlyId
   paginates_per 10
+
+  friendly_id :name, use: :slugged
 
   mount_uploader :logo, LogoUploader
 

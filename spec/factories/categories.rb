@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :category do
-    title Faker::Commerce.department
+    title { Faker::Lorem.word }
   end
 end

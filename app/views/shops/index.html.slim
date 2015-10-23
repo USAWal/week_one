@@ -4,7 +4,7 @@
       - shops.each do |shop|
         .col-md-3
           .card
-            = image_tag shop.logo_url, class: 'grid-logo'
+            = image_tag shop.logo_url(:thumb), class: 'grid-logo'
             .card-block
               h4.card-title = shop.name.truncate 20
               p.card-text = shop.description.truncate 100

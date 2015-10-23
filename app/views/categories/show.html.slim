@@ -1,0 +1,10 @@
+breadcrumb
+.container
+  .row
+    .col-md-12
+      ol.breadcrumb
+        li
+          = link_to 'Home', shops_path
+        li
+          = link_to @shop.name, shop_path(@shop)
+        li.active = @category.title

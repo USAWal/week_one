@@ -24,9 +24,12 @@ ActiveRecord::Schema.define(version: 20151022103100) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "title",      null: false
+    t.string   "slug",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "categories", ["slug"], name: "index_categories_on_slug", unique: true, using: :btree
 
   create_table "categories_products", id: false, force: :cascade do |t|
     t.integer "product_id",  null: false
@@ -56,6 +59,7 @@ ActiveRecord::Schema.define(version: 20151022103100) do
   create_table "shops", force: :cascade do |t|
     t.integer  "user_id",     null: false
     t.string   "name",        null: false
+    t.string   "slug",        null: false
     t.text     "description"
     t.string   "logo"
     t.datetime "created_at",  null: false
@@ -63,6 +67,7 @@ ActiveRecord::Schema.define(version: 20151022103100) do
   end
 
   add_index "shops", ["name"], name: "index_shops_on_name", unique: true, using: :btree
+  add_index "shops", ["slug"], name: "index_shops_on_slug", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

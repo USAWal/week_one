@@ -5,6 +5,7 @@ RSpec.describe Shop, type: :model do
   it { is_expected.to have_db_column(:name).of_type(:string).with_options(null: false) }
   it { is_expected.to have_db_column(:description).of_type(:text) }
   it { is_expected.to have_db_column(:logo).of_type(:string) }
+  it { is_expected.to have_db_column(:slug).of_type(:string) }
 
   it { is_expected.to validate_presence_of :owner }
   it { is_expected.to validate_presence_of :name }
@@ -18,6 +19,7 @@ RSpec.describe Shop, type: :model do
   it { is_expected.to have_many(:categories).through(:products) }
 
   it { is_expected.to have_db_index(:name).unique(true) }
+  it { is_expected.to have_db_index(:slug).unique(true) }
 
   context 'has some products with identical categories' do
     subject { create :shop }

@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  get 'shops/index'
-
   root 'main#index'
 
   devise_for :users
 
-  resources :shops, only: [:index, :show]
+  resources :shops, only: [:index, :show] do
+    resources :categories, only: :show
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

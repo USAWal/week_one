@@ -1,0 +1,29 @@
+.container
+  .row
+    .col-md-12
+      ol.breadcrumb
+        li
+          = link_to 'Home', shops_path
+        li.active = @shop.name
+  .row
+    .col-md-12
+      .row
+        .col-md-5
+          = image_tag @shop.logo_url, class: 'img-responsive'
+        .col-md-7
+          .row
+            .col-md-8
+              h2 = @shop.name
+            .col-md-4
+              button.btn.btn-primary data-toggle='collapse' data-target='#description' aria-expanded='false' aria-controls='collapseExample' Description
+          .row
+            .col-md-12
+              div#description.collapse
+                p = @shop.description
+  hr
+  .row
+    .col-md-3
+      .list-group
+        - @shop.categories.each do |category|
+          = link_to category.title, shop_category_path(shop_id: @shop.slug, id: category.slug), class: 'list-group-item'
+    .col-md-9

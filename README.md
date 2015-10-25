@@ -32,5 +32,5 @@ What services are required
  Developing Rails application is a bottom-up process, so priority is always on models side. We need to think a lot about strucutre of application to simplify our life in future. First of all I wrote tests for models. After that I coded models and connected them. After that I was able to write business logic in controllers, growing funcitonality of the application.
  
  Any other details you wish to make us aware of.
- ===============================================
+-----------------------------------------------
  I implemented Shop entity. Shop is just a showcase for you products. Shop helps you represent the same products as many times as you want, so browsing list of categories and products of categories is always in scope of a shop. Working with categories happens through product editting. I thought it's ok because other way Product CRUD doesn't differ from Category CRUD, it's boring. So any user could be seller as well as consumer.

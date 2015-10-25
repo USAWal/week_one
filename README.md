@@ -1,4 +1,5 @@
-== Week One app
+Week One app
+============
 
 What services are required
 --------------------------
